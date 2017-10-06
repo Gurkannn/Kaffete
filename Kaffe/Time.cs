@@ -17,6 +17,8 @@ namespace Kaffe
             {
                 Interval = 1000
             };
+
+            gameTimer.Enabled = true;
         }
 
         private static void OnGameTick(object sender, ElapsedEventArgs e)
