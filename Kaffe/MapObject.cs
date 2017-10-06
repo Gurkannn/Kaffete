@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Kaffe
 {
-    class MapObject
+    abstract class MapObject : IPosition, IEntity
     {
+        public abstract int PosX { get; set; }
+        public abstract int PosY { get; set; }
+        public abstract bool CanWalkOn { get; set; }
+        public abstract bool CanInteractWith { get; set; }
+        public abstract string Icon { get; set; }
+        public abstract ConsoleColor Color { get; set; }
+
+        public abstract void Interact();
     }
 }
