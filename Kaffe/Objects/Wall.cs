@@ -8,6 +8,11 @@ namespace Kaffe.Objects
 {
     class Wall : MapObject
     {
+        public Wall()
+        {
+            CanWalkOn = false;
+            CanInteractWith = false;
+        }
         int posX;
         int posY;
         bool canWalkOn;
