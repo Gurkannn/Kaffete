@@ -8,6 +8,9 @@ namespace Kaffe
 {
     class Program
     {
+            Level.GameStates curGameStates;
+            Level.LevelStates curLevelStates;
+
         static void Main(string[] args)
         {
             Time.InitializeTimer();
@@ -15,6 +18,7 @@ namespace Kaffe
             Map.DrawMap();
             Console.ReadKey();
             
+
         }
     }
 }
