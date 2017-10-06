@@ -8,11 +8,13 @@ namespace Kaffe
 {
     class Player : MapObject
     {
-        public Player()
+        public Player(int x, int y) : base(x, y)
         {
             CanWalkOn = false;
             CanInteractWith = false;
             Icon = "o";
+            CurrentDirection = Direction.West;
+            bodyLenght = 1;
         }
         int posX;
         int posY;
@@ -71,6 +73,6 @@ namespace Kaffe
 
     public enum Direction
     {
-        North,South,West,East
+        North, South, West, East
     }
 }

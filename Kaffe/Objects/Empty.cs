@@ -8,11 +8,11 @@ namespace Kaffe
 {
     class Empty : MapObject
     {
-        public Empty()
+        public Empty(int x, int y) : base(x, y)
         {
             CanWalkOn = true;
             CanInteractWith = true;
-            Icon = ".";
+            Icon = " ";
         }
       
         int posX;

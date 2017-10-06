@@ -8,6 +8,12 @@ namespace Kaffe
 {
     abstract class MapObject : IPosition, IEntity
     {
+
+        protected MapObject(int X, int Y)
+        {
+            PosX = X;
+            PosY = Y;
+        }
         public abstract bool IsPlayerTail { get; set; }
         public abstract int TailDuration { get; set; }
         public abstract int PosX { get; set; }

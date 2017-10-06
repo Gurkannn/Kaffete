@@ -10,7 +10,7 @@ namespace Kaffe
     {
         static void Main(string[] args)
         {
-
+            Time.InitializeTimer();
             Map.InitializeMap(10,10);
             Map.DrawMap();
             Console.ReadKey();

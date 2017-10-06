@@ -18,12 +18,15 @@ namespace Kaffe
                 Interval = 1000
             };
 
+            gameTimer.Elapsed += OnGameTick;
             gameTimer.Enabled = true;
         }
 
         private static void OnGameTick(object sender, ElapsedEventArgs e)
         {
-            
+            Map.MovePlayer();
+            Map.DrawMap();
+            Map.DecreaseTailTimer();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Kaffe
 {
     class Point : MapObject
     {
-        public Point()
+        public Point(int x, int y) : base(x, y)
         {
             CanWalkOn = true;
             CanInteractWith = true;

@@ -8,7 +8,7 @@ namespace Kaffe
 {
     class Wall : MapObject
     {
-        public Wall()
+        public Wall(int x, int y) : base(x, y)
         {
             CanWalkOn = false;
             CanInteractWith = false;
