@@ -14,7 +14,7 @@ namespace Kaffe
             CanInteractWith = false;
             Icon = "o";
             CurrentDirection = Direction.West;
-            bodyLenght = 1;
+            bodyLenght = 3;
         }
         int posX;
         int posY;

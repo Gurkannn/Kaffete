@@ -14,11 +14,9 @@ namespace Kaffe
         static void Main(string[] args)
         {
             Time.InitializeTimer();
-            Map.InitializeMap(10,10);
+            Map.InitializeMap(20,15);
             Map.DrawMap();
             Console.ReadKey();
-            
-
         }
     }
 }
