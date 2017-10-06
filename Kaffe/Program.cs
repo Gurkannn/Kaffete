@@ -10,7 +10,8 @@ namespace Kaffe
     {
         static void Main(string[] args)
         {
-
+            string emil = "Hej emil";
+            Console.WriteLine(emil);
         }
     }
 }
