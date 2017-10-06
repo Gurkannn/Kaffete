@@ -12,9 +12,11 @@ namespace Kaffe
         {
             CanWalkOn = false;
             CanInteractWith = false;
+            Icon = "o";
         }
         int posX;
         int posY;
+        int bodyLenght;
         bool canWalkOn;
         bool canInteractWith;
         string icon;
@@ -29,8 +31,16 @@ namespace Kaffe
         public override bool CanWalkOn { get => canWalkOn; set => canWalkOn = value; }
         public override bool CanInteractWith { get => canInteractWith; set => canInteractWith = value; }
 
-        public override string Icon { get => icon; set => Icon = value; }
+        public override string Icon { get => icon; set => icon = value; }
         public override ConsoleColor Color { get => color; set => color = value; }
+        public int BodyLenght { get => bodyLenght; set => bodyLenght = value; }
+
+        private int tailDuration;
+        public override int TailDuration { get => tailDuration; set => tailDuration = value; }
+
+
+        private bool isPlayerTail;
+        public override bool IsPlayerTail { get => isPlayerTail; set => isPlayerTail = value; }
 
         public void MovePlayer()
         {
