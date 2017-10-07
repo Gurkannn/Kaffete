@@ -35,7 +35,7 @@ namespace Kaffe
 
         public override void Interact()
         {
-            throw new NotImplementedException();
+            Program.GameOver();
         }
     }
 }

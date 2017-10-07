@@ -22,10 +22,21 @@ namespace Kaffe
         public static MapObject[,] MapA { get => mapA; set => mapA = value; }
         public static Player Player { get => player; set => player = value; }
         public static Direction InputDirection { get => inputDirection; set => inputDirection = value; }
-        public static int Score { get { return score; } set { score = value; Player.IncreaseBodyLenght(); } }
+
+        public static int Score { get { return score; } set
+            {
+                if(value > score)
+                    Player.IncreaseBodyLenght();
+                score = value;
+                if (score % 3 == 0)
+                    Time.DecreaseInterval();
+            } }
 
         public static void InitializeMap(int width, int height)
         {
+            Score = 0;
+            if (Player != null)
+                Player.ResetBodyLenght();
             Width = width;
             Height = height;
 

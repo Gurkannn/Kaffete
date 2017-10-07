@@ -15,11 +15,13 @@ namespace Kaffe
             Icon = "O";
             TailIcon = "o";
             CurrentDirection = Direction.West;
+            bodyStartLenght = 3;
             bodyLenght = 3;
         }
         int posX;
         int posY;
         int bodyLenght;
+        int bodyStartLenght;
         bool canWalkOn;
         bool canInteractWith;
         string icon;
@@ -39,6 +41,11 @@ namespace Kaffe
         public override string Icon { get => icon; set => icon = value; }
         public override ConsoleColor Color { get => color; set => color = value; }
         public int BodyLenght { get => bodyLenght; set => bodyLenght = value; }
+
+        public void ResetBodyLenght()
+        {
+            bodyLenght = bodyStartLenght;
+        }
 
         public void IncreaseBodyLenght()
         {
