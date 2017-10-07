@@ -42,7 +42,10 @@ namespace Kaffe
 
         public override void Interact()
         {
-            throw new NotImplementedException();
+            if (IsPlayerTail)
+            {
+                Program.GameOver();
+            }
         }
     }
 }

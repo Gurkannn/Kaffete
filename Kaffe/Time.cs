@@ -11,11 +11,11 @@ namespace Kaffe
     {
         private static Timer gameTimer;
 
-        public static void InitializeTimer()
+        public static void InitializeTimer(int ms)
         {
             gameTimer = new Timer()
             {
-                Interval = 1000
+                Interval = ms
             };
 
             gameTimer.Elapsed += OnGameTick;

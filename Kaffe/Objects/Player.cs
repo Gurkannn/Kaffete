@@ -12,7 +12,8 @@ namespace Kaffe
         {
             CanWalkOn = false;
             CanInteractWith = false;
-            Icon = "o";
+            Icon = "O";
+            TailIcon = "o";
             CurrentDirection = Direction.West;
             bodyLenght = 3;
         }
@@ -22,6 +23,7 @@ namespace Kaffe
         bool canWalkOn;
         bool canInteractWith;
         string icon;
+        string tailIcon;
         ConsoleColor color;
 
         Direction currentDirection;
@@ -33,9 +35,15 @@ namespace Kaffe
         public override bool CanWalkOn { get => canWalkOn; set => canWalkOn = value; }
         public override bool CanInteractWith { get => canInteractWith; set => canInteractWith = value; }
 
+        public string TailIcon { get => tailIcon; set => tailIcon = value; }
         public override string Icon { get => icon; set => icon = value; }
         public override ConsoleColor Color { get => color; set => color = value; }
         public int BodyLenght { get => bodyLenght; set => bodyLenght = value; }
+
+        public void IncreaseBodyLenght()
+        {
+            BodyLenght++;            
+        }
 
         private int tailDuration;
         public override int TailDuration { get => tailDuration; set => tailDuration = value; }

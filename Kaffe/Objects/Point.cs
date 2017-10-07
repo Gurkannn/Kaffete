@@ -34,7 +34,10 @@ namespace Kaffe
         public override bool IsPlayerTail { get => isPlayerTail; set => isPlayerTail = value; }
         public override void Interact()
         {
-            throw new NotImplementedException();
+            Map.SpawnPoint();
+            Map.Score++;
+            Map.IncreaseTailTimer();
+            Map.MapA[PosX, PosY] = new Empty(PosX,PosY);
         }
     }
 }

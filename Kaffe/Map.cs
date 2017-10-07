@@ -12,11 +12,17 @@ namespace Kaffe
         private static int height;
         private static MapObject[,] mapA;
         private static Player player;
+        static Random random = new Random();
+        static Direction inputDirection;
+        private static int score; 
+
 
         public static int Width { get => width; set => width = value; }
         public static int Height { get => height; set => height = value; }
         public static MapObject[,] MapA { get => mapA; set => mapA = value; }
         public static Player Player { get => player; set => player = value; }
+        public static Direction InputDirection { get => inputDirection; set => inputDirection = value; }
+        public static int Score { get { return score; } set { score = value; Player.IncreaseBodyLenght(); } }
 
         public static void InitializeMap(int width, int height)
         {
@@ -61,10 +67,11 @@ namespace Kaffe
                     {
                         if (MapA[x, y].TailDuration > 0)
                         {
-                            Console.Write(Player.Icon);
+                            Console.Write(Player.TailIcon);
                         }
                         else
                         {
+                            Console.Write(" ");
                             MapA[x, y].IsPlayerTail = false;
                         }
                     }
@@ -75,10 +82,30 @@ namespace Kaffe
                 }
                 Console.WriteLine();
             }
+            DrawScore();
+        }
+
+
+        public static void DrawScore()
+        {
+            Console.WriteLine("Score: " + Score);
+        }
+
+
+        public static void SpawnPoint()
+        {
+            int pointX = random.Next(1, Width - 1);
+            int pointY = random.Next(1, Height - 1);
+
+            MapA[pointX, pointY] = new Point(pointX, pointY);
         }
 
         public static void MovePlayer()
         {
+            if (Player.CurrentDirection != InputDirection)
+            {
+                Player.CurrentDirection = InputDirection;
+            }
             if (CanMove(Player.CurrentDirection))
             {
                 MapA[player.PosX, player.PosY].IsPlayerTail = true;
@@ -101,6 +128,20 @@ namespace Kaffe
             }
         }
 
+        public static void IncreaseTailTimer()
+        {
+            for (int y = 0; y < MapA.GetLength(1); y++)
+            {
+                for (int x = 0; x < MapA.GetLength(0); x++)
+                {
+                    if (MapA[x, y].TailDuration > 0)
+                    {
+                        MapA[x, y].TailDuration++;
+                    }
+                }
+            }
+        }
+
         private static bool CanMove(Direction direction)
         {
             MapObject tempTile;
@@ -108,24 +149,32 @@ namespace Kaffe
             {
                 case Direction.North:
                     tempTile = MapA[Player.PosX, Player.PosY - 1];
+                    if (tempTile.CanInteractWith)
+                        tempTile.Interact();
                     if (tempTile.CanWalkOn)
                         return true;
                     else
                         return false;
                 case Direction.South:
                     tempTile = MapA[Player.PosX, Player.PosY + 1];
+                    if (tempTile.CanInteractWith)
+                        tempTile.Interact();
                     if (tempTile.CanWalkOn)
                         return true;
                     else
                         return false;
                 case Direction.West:
                     tempTile = MapA[Player.PosX - 1, Player.PosY];
+                    if (tempTile.CanInteractWith)
+                        tempTile.Interact();
                     if (tempTile.CanWalkOn)
                         return true;
                     else
                         return false;
                 case Direction.East:
                     tempTile = MapA[Player.PosX + 1, Player.PosY];
+                    if (tempTile.CanInteractWith)
+                        tempTile.Interact();
                     if (tempTile.CanWalkOn)
                         return true;
                     else

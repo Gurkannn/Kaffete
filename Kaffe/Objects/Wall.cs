@@ -11,7 +11,7 @@ namespace Kaffe
         public Wall(int x, int y) : base(x, y)
         {
             CanWalkOn = false;
-            CanInteractWith = false;
+            CanInteractWith = true;
             Icon = "#";
         }
         int posX;
