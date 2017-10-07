@@ -96,7 +96,10 @@ namespace Kaffe
         {
             int pointX = random.Next(1, Width - 1);
             int pointY = random.Next(1, Height - 1);
-
+            if (MapA[pointX,pointY].IsPlayerTail)
+            {
+                SpawnPoint();
+            }
             MapA[pointX, pointY] = new Point(pointX, pointY);
         }
 
