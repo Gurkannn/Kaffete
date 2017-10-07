@@ -15,7 +15,7 @@ namespace Kaffe
             gameActive = false;
         }
 
-        static int gameTick = 200;
+        static int gameTick = 400;
 
         Level.GameStates curGameStates;
         Level.LevelStates curLevelStates;
