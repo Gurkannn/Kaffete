@@ -24,6 +24,9 @@ namespace Kaffe
             Level.GameStates curGameStates = Level.GameStates.intro;
             // Console.CursorVisible = false;
             //Console.ReadKey();
+            Map.InitializeMap(20, 15);
+            Map.SpawnPoint();
+            Map.DrawMap();
             while (gameActive)
             {
                 switch (curGameStates)
@@ -36,39 +39,33 @@ namespace Kaffe
                         curGameStates = Level.GameStates.ingame;
                         break;
                     case Level.GameStates.ingame:
-                        switch (levelStates1)
-                        {
-                            case Level.LevelStates.level1:
-                                Console.SetCursorPosition(0, 0);
-                                Time.InitializeTimer(gameTick);
-                                Map.InitializeMap(20, 15);
-                                Map.SpawnPoint();
-                                Map.DrawMap();
-                                switch (Console.ReadKey().KeyChar.ToString())
-                                {
 
-                                    case "w":
-                                        if (Map.Player.CurrentDirection != Direction.South)
-                                            Map.InputDirection = Direction.North;
-                                        break;
-                                    case "a":
-                                        if (Map.Player.CurrentDirection != Direction.East)
-                                            Map.InputDirection = Direction.West;
-                                        break;
-                                    case "s":
-                                        if (Map.Player.CurrentDirection != Direction.North)
-                                            Map.InputDirection = Direction.South;
-                                        break;
-                                    case "d":
-                                        if (Map.Player.CurrentDirection != Direction.West)
-                                            Map.InputDirection = Direction.East;
-                                        break;
-                                    default:
-                                        break;
-                                }
+                        Console.SetCursorPosition(0, 0);
+                        Time.InitializeTimer(gameTick);
+                        switch (Console.ReadKey().KeyChar.ToString())
+                        {
+
+                            case "w":
+                                if (Map.Player.CurrentDirection != Direction.South)
+                                    Map.InputDirection = Direction.North;
+                                break;
+                            case "a":
+                                if (Map.Player.CurrentDirection != Direction.East)
+                                    Map.InputDirection = Direction.West;
+                                break;
+                            case "s":
+                                if (Map.Player.CurrentDirection != Direction.North)
+                                    Map.InputDirection = Direction.South;
+                                break;
+                            case "d":
+                                if (Map.Player.CurrentDirection != Direction.West)
+                                    Map.InputDirection = Direction.East;
+                                break;
+                            default:
                                 break;
                         }
                         break;
+
 
                 }
             }
