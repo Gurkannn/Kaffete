@@ -14,7 +14,7 @@ namespace Kaffe
         private static Player player;
         static Random random = new Random();
         static Direction inputDirection;
-        private static int score; 
+        private static int score;
 
 
         public static int Width { get => width; set => width = value; }
@@ -96,9 +96,10 @@ namespace Kaffe
         {
             int pointX = random.Next(1, Width - 1);
             int pointY = random.Next(1, Height - 1);
-            if (MapA[pointX,pointY].IsPlayerTail)
+            while (MapA[pointX, pointY].IsPlayerTail)
             {
-                SpawnPoint();
+                pointX = random.Next(1, Width - 1);
+                pointY = random.Next(1, Height - 1);
             }
             MapA[pointX, pointY] = new Point(pointX, pointY);
         }

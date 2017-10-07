@@ -42,7 +42,7 @@ namespace Kaffe
             while (gameActive)
             {
                 Map.DrawMap();
-                switch (Console.ReadKey().KeyChar.ToString())
+                switch (Console.ReadKey().KeyChar.ToString().ToLower())
                 {
                     case "w":
                         if (Map.Player.CurrentDirection != Direction.South)
