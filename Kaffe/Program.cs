@@ -73,7 +73,7 @@ namespace Kaffe
             while (gameActive)
             {
                 if (gameActive)
-                    Map.DrawMap();
+                   // Map.DrawMap();
                 switch (Console.ReadKey().KeyChar.ToString().ToLower())
                 {
                     case "w":
