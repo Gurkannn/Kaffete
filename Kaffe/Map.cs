@@ -99,7 +99,10 @@ namespace Kaffe
 
         public static void DrawScore()
         {
+            Console.SetCursorPosition(0, Height);
             Console.WriteLine("Score: " + Score);
+            Console.SetCursorPosition(0, 0);
+
         }
 
 

@@ -52,7 +52,7 @@ namespace Kaffe
 
             while (input != "r" && input != "e")
             {
-                input = Console.ReadKey().KeyChar.ToString().ToLower();
+                input = Console.ReadKey(true).KeyChar.ToString().ToLower();
             }
             Console.WriteLine("Debug");
             switch (input)
@@ -74,7 +74,7 @@ namespace Kaffe
             {
                 if (gameActive)
                     Map.DrawMap();
-                switch (Console.ReadKey().KeyChar.ToString().ToLower())
+                switch (Console.ReadKey(true).KeyChar.ToString().ToLower())
                 {
                     case "w":
                         if (Map.Player.CurrentDirection != Direction.South)
@@ -105,6 +105,7 @@ namespace Kaffe
         {
             Level.LevelStates levelStates1 = Level.LevelStates.level1;
             Level.GameStates curGameStates = Level.GameStates.intro;
+            Console.CursorVisible = false;
             GameIntro();
 
             GameSetup();
