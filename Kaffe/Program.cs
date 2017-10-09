@@ -73,8 +73,7 @@ namespace Kaffe
             while (gameActive)
             {
                 if (gameActive)
-                   // Map.DrawMap();
-                switch (Console.ReadKey().KeyChar.ToString().ToLower())
+                switch (Console.ReadKey(true).KeyChar.ToString().ToLower())
                 {
                     case "w":
                         if (Map.Player.CurrentDirection != Direction.South)
@@ -92,11 +91,6 @@ namespace Kaffe
                         if (Map.Player.CurrentDirection != Direction.West)
                             Map.InputDirection = Direction.East;
                         break;
-                        //case "r":
-                        //    GameOutro();
-                        //    break;
-                        //default:
-                        //    break;
                 }
             }
         }
@@ -109,6 +103,7 @@ namespace Kaffe
             GameIntro();
 
             GameSetup();
+
             while (gameRestarting)
             {
                 GameLoop();

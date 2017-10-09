@@ -33,6 +33,9 @@ namespace Kaffe
         private bool isPlayerTail;
         public override bool IsPlayerTail { get => isPlayerTail; set => isPlayerTail = value; }
 
+        private ObjectType objType = ObjectType.Wall;
+        public override ObjectType ObjType { get => objType; }
+
         public override void Interact()
         {
             Program.GameOver();

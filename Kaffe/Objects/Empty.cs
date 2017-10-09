@@ -25,8 +25,17 @@ namespace Kaffe
         public override int PosY { get => posY; set => posY = value; }
         public override bool CanWalkOn { get => canWalkOn; set => canWalkOn = value; }
         public override bool CanInteractWith { get => canInteractWith; set => canInteractWith = value; }
-        public override string Icon { get => icon; set => icon = value; }
+        public override string Icon { get
+            {
+                if (IsPlayerTail)
+                    return "o";
+                else
+                    return icon;
+            } set => icon = value; }
         public override ConsoleColor Color { get => color; set => color = value; }
+
+        private ObjectType objType = ObjectType.Empty;
+        public override ObjectType ObjType { get => objType; }
 
         public void SetAsTail(int bodyLenght)
         {

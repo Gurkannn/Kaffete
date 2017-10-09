@@ -20,6 +20,8 @@ namespace Kaffe
         }
         int posX;
         int posY;
+        int nextPosX;
+        int nextPosY;
         int bodyLenght;
         int bodyStartLenght;
         bool canWalkOn;
@@ -31,8 +33,11 @@ namespace Kaffe
         Direction currentDirection;
         public Direction CurrentDirection { get => currentDirection; set => currentDirection = value; }
 
-        public override int PosX { get => posX; set => posX = value; }
-        public override int PosY { get => posY; set => posY = value; }
+        public override int PosX { get => posX; set { nextPosX = value; posX = value; } }
+        public override int PosY { get => posY; set { nextPosY = value; posY = value; } }
+
+        public int NextPosX { get => nextPosX; set => nextPosX = value; }
+        public int NextPosY { get => nextPosY; set => nextPosY = value; }
 
         public override bool CanWalkOn { get => canWalkOn; set => canWalkOn = value; }
         public override bool CanInteractWith { get => canInteractWith; set => canInteractWith = value; }
@@ -41,6 +46,9 @@ namespace Kaffe
         public override string Icon { get => icon; set => icon = value; }
         public override ConsoleColor Color { get => color; set => color = value; }
         public int BodyLenght { get => bodyLenght; set => bodyLenght = value; }
+
+        private ObjectType objType = ObjectType.Player;
+        public override ObjectType ObjType { get => objType;}
 
         public void ResetBodyLenght()
         {
@@ -64,16 +72,16 @@ namespace Kaffe
             switch (CurrentDirection)
             {
                 case Direction.North:
-                    PosY--;
+                    NextPosY--;
                     break;
                 case Direction.South:
-                    PosY++;
+                    NextPosY++;
                     break;
                 case Direction.West:
-                    PosX--;
+                    NextPosX--;
                     break;
                 case Direction.East:
-                    PosX++;
+                    NextPosX++;
                     break;
                 default:
                     break;

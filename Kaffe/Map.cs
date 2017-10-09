@@ -23,14 +23,27 @@ namespace Kaffe
         public static Player Player { get => player; set => player = value; }
         public static Direction InputDirection { get => inputDirection; set => inputDirection = value; }
 
-        public static int Score { get { return score; } set
+
+        public static void ChangeTile(int x, int y, MapObject obj)
+        {
+            if (MapA[x, y] != obj)
             {
-                if(value > score)
+                MapA[x, y] = obj;
+            }
+        }
+
+        public static int Score
+        {
+            get { return score; }
+            set
+            {
+                if (value > score)
                     Player.IncreaseBodyLenght();
                 score = value;
                 if (score % 3 == 0)
                     Time.DecreaseInterval();
-            } }
+            }
+        }
 
         public static void InitializeMap(int width, int height)
         {
@@ -63,47 +76,55 @@ namespace Kaffe
             //MapA[Player.PosX, Player.PosY] = Player;
         }
 
+        
+
         public static void DrawMap()
         {
-            Console.Clear();
+            string tempMap = "";
             for (int y = 0; y < MapA.GetLength(1); y++)
             {
                 for (int x = 0; x < MapA.GetLength(0); x++)
                 {
                     if (x == Player.PosX && y == Player.PosY)
                     {
-                        Console.Write(Player.Icon);
+                        tempMap += Player.Icon;
                     }
                     else if (MapA[x, y].IsPlayerTail)
                     {
                         if (MapA[x, y].TailDuration > 0)
                         {
-                            Console.Write(Player.TailIcon);
+                            tempMap += Player.TailIcon;
                         }
                         else
                         {
-                            Console.Write(" ");
+                            tempMap += " ";
                             MapA[x, y].IsPlayerTail = false;
                         }
                     }
                     else
                     {
-                        Console.Write(MapA[x, y].Icon);
+                        tempMap += MapA[x, y].Icon;
                     }
                 }
-                Console.WriteLine();
+                tempMap += "\n";                
             }
-            DrawScore();
+            tempMap += GetScoreString();
+            Console.Clear();
+            Console.WriteLine(tempMap);
         }
 
+       
 
-        public static void DrawScore()
+        public static string GetScoreString()
         {
-            Console.SetCursorPosition(0, Height);
-            Console.WriteLine("Score: " + Score);
-            Console.SetCursorPosition(0, 0);
+            string tempString = "";        
+
+            tempString += "Score: ";
+            tempString += Score;
+            return tempString;
 
         }
+
 
 
         public static void SpawnPoint()
@@ -115,7 +136,8 @@ namespace Kaffe
                 pointX = random.Next(1, Width - 1);
                 pointY = random.Next(1, Height - 1);
             }
-            MapA[pointX, pointY] = new Point(pointX, pointY);
+            ChangeTile(pointX, pointY, new Point(pointX, pointY));
+            //MapA[pointX, pointY] = new Point(pointX, pointY);
         }
 
         public static void MovePlayer()
@@ -126,9 +148,13 @@ namespace Kaffe
             }
             if (CanMove(Player.CurrentDirection))
             {
-                MapA[player.PosX, player.PosY].IsPlayerTail = true;
-                MapA[player.PosX, player.PosY].TailDuration = Player.BodyLenght;
+                //MapA[player.PosX, player.PosY].IsPlayerTail = true;
+                //MapA[player.PosX, player.PosY].TailDuration = Player.BodyLenght;
                 Player.MovePlayer();
+                ChangeTile(Player.NextPosX, Player.NextPosY, Player);
+                Player.PosX = Player.NextPosX;
+                Player.PosY = Player.NextPosY;
+                ChangeTile(player.PosX, player.PosY, new Empty(player.PosX, player.PosY) { IsPlayerTail = true, TailDuration = Player.BodyLenght });
             }
         }
 

@@ -22,7 +22,13 @@ namespace Kaffe
         public abstract bool CanInteractWith { get; set; }
         public abstract string Icon { get; set; }
         public abstract ConsoleColor Color { get; set; }
+        public abstract ObjectType ObjType { get; }
 
         public abstract void Interact();
+    }
+
+    public enum ObjectType
+    {
+        Empty, Point, Wall, Player
     }
 }
