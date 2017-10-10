@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="IEntity.cs" />
     <Compile Include="IPosition.cs" />
-    <Compile Include="Level.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapObject.cs" />
     <Compile Include="Objects\Empty.cs" />
