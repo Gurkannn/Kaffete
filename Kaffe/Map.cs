@@ -47,6 +47,7 @@ namespace Kaffe
 
         public static void InitializeMap(int width, int height)
         {
+            Console.Clear();
             Score = 0;
             if (Player != null)
                 Player.ResetBodyLenght();
@@ -81,7 +82,6 @@ namespace Kaffe
         public static void DrawMap()
         {
             Console.SetCursorPosition(0, 0);
-            Console.CursorVisible = false;
             string tempMap = "";
             for (int y = 0; y < MapA.GetLength(1); y++)
             {
