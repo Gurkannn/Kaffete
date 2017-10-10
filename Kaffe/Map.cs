@@ -80,6 +80,8 @@ namespace Kaffe
 
         public static void DrawMap()
         {
+            Console.SetCursorPosition(0, 0);
+            Console.CursorVisible = false;
             string tempMap = "";
             for (int y = 0; y < MapA.GetLength(1); y++)
             {
@@ -109,7 +111,7 @@ namespace Kaffe
                 tempMap += "\n";                
             }
             tempMap += GetScoreString();
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine(tempMap);
         }
 

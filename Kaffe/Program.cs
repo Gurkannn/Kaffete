@@ -24,7 +24,7 @@ namespace Kaffe
 
             gameActive = true;
             Time.InitializeTimer(gameTick);
-            Map.InitializeMap(random.Next(15, 30), random.Next(14,24));
+            Map.InitializeMap(random.Next(15, 30), random.Next(14, 24));
             Map.SpawnPoint();
             Map.DrawMap();
         }
@@ -70,28 +70,30 @@ namespace Kaffe
 
         static void GameLoop()
         {
+
             while (gameActive)
             {
+                
                 if (gameActive)
-                switch (Console.ReadKey(true).KeyChar.ToString().ToLower())
-                {
-                    case "w":
-                        if (Map.Player.CurrentDirection != Direction.South)
-                            Map.InputDirection = Direction.North;
-                        break;
-                    case "a":
-                        if (Map.Player.CurrentDirection != Direction.East)
-                            Map.InputDirection = Direction.West;
-                        break;
-                    case "s":
-                        if (Map.Player.CurrentDirection != Direction.North)
-                            Map.InputDirection = Direction.South;
-                        break;
-                    case "d":
-                        if (Map.Player.CurrentDirection != Direction.West)
-                            Map.InputDirection = Direction.East;
-                        break;
-                }
+                    switch (Console.ReadKey(true).KeyChar.ToString().ToLower())
+                    {
+                        case "w":
+                            if (Map.Player.CurrentDirection != Direction.South)
+                                Map.InputDirection = Direction.North;
+                            break;
+                        case "a":
+                            if (Map.Player.CurrentDirection != Direction.East)
+                                Map.InputDirection = Direction.West;
+                            break;
+                        case "s":
+                            if (Map.Player.CurrentDirection != Direction.North)
+                                Map.InputDirection = Direction.South;
+                            break;
+                        case "d":
+                            if (Map.Player.CurrentDirection != Direction.West)
+                                Map.InputDirection = Direction.East;
+                            break;
+                    }
             }
         }
 
